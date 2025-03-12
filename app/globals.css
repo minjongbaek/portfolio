@@ -40,7 +40,7 @@
   }
 
   ul {
-    @apply ml-6 pb-2 flex flex-col gap-2;
+    @apply ml-6 pb-2 flex flex-col gap-1;
 
     li {
       @apply list-disc;
@@ -60,7 +60,7 @@
   }
 
   code {
-    @apply py-0.5 px-1 rounded bg-gray-200/50 text-sm text-blue-500;
+    @apply py-0.5 px-1.5 rounded bg-gray-200/50 text-sm text-blue-500;
   }
 }
 
@@ -84,7 +84,7 @@
     }
 
     ul:last-child {
-      margin-bottom: 12px;
+      @apply pb-0;
     }
   }
 }

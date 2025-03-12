@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const BIO = [
   {
     label: "Email",
@@ -29,6 +31,26 @@ const WORK_EXPERIENCE = [
   },
 ];
 
+const SIDE_PROJECTS = [
+  {
+    id: "dadok",
+    title: "다독다독",
+    startDate: "2023.02",
+    endDate: "2023.05",
+  },
+  {
+    id: "blog",
+    title: "Blog.minjong",
+    startDate: "2023.01",
+  },
+  {
+    id: "shawkee",
+    title: "Shawkee OS",
+    startDate: "2023.12",
+    endDate: "2024.06",
+  },
+];
+
 const Resume = async () => {
   const { default: IntroduceContent } = await import(`@/content/introduce.mdx`);
 
@@ -37,6 +59,15 @@ const Resume = async () => {
       [...WORK_EXPERIENCE].map(async (experience) => {
         const { default: WorkExperienceContent } = await import(`@/content/experience/${experience.id}.mdx`);
         return { ...experience, WorkExperienceContent };
+      })
+    )
+  ).reverse();
+
+  const sideProjectsWithContent = (
+    await Promise.all(
+      [...SIDE_PROJECTS].map(async (sideProject) => {
+        const { default: SideProjectContent } = await import(`@/content/project/${sideProject.id}.mdx`);
+        return { ...sideProject, SideProjectContent };
       })
     )
   ).reverse();
@@ -63,10 +94,13 @@ const Resume = async () => {
       <div>
         <h2>경력</h2>
         <hr className="border-gray-300 mt-4 mb-8" />
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-12">
           {workExperienceWithContent.map(({ id, title, position, startDate, endDate, WorkExperienceContent }) => (
             <div className="flex" key={id}>
               <div className="flex flex-col gap-2 w-42 mr-6 shrink-0">
+                <div className="border border-gray-200/80 rounded-xl w-20 p-1">
+                  <Image src={`/experience/${id}.png`} alt="title" width={80} height={80} />
+                </div>
                 <h3>{title}</h3>
                 <div className="flex flex-col">
                   <span>{position}</span>
@@ -78,6 +112,31 @@ const Resume = async () => {
               </div>
               <div className="border-l pl-6 border-gray-200/80 grow markdown">
                 <WorkExperienceContent />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h2>프로젝트</h2>
+        <hr className="border-gray-300 mt-4 mb-8" />
+        <div className="flex flex-col gap-12">
+          {sideProjectsWithContent.map(({ id, title, startDate, endDate, SideProjectContent }) => (
+            <div className="flex" key={id}>
+              <div className="flex flex-col gap-2 w-42 mr-6 shrink-0">
+                <div className="border border-gray-200/80 rounded-xl w-20 p-1">
+                  <Image src={`/project/${id}.png`} alt="title" width={80} height={80} />
+                </div>
+                <h3>{title}</h3>
+                <div className="flex flex-col">
+                  <span>
+                    {startDate} - {endDate ?? "진행중"}
+                  </span>
+                  {endDate && <span>({getDuration(startDate, endDate)})</span>}
+                </div>
+              </div>
+              <div className="border-l pl-6 border-gray-200/80 grow markdown">
+                <SideProjectContent />
               </div>
             </div>
           ))}
@@ -99,6 +158,10 @@ const getDuration = (startDate: string, endDate?: string): string => {
   if (months < 0) {
     years -= 1;
     months += 12;
+  }
+
+  if (years === 0) {
+    return `${months}개월`;
   }
 
   return `${years}년 ${months}개월`;
