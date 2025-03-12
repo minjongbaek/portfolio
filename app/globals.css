@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  body {
+    @apply leading-7 break-keep;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-semibold;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1 {
+    @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl pb-2 pt-2.5 w-full;
+  }
+
+  h5 {
+    @apply text-lg pb-2 pt-2.5;
+  }
+
+  a {
+    &:hover {
+      @apply text-blue-500;
+    }
+  }
+
+  ul {
+    @apply ml-6 pb-2 flex flex-col gap-2;
+
+    li {
+      @apply list-disc;
+    }
+  }
+
+  /* strong {
+    @apply text-blue-500;
+  } */
+
+  blockquote {
+    @apply py-4 px-6 bg-gray-200/50 rounded my-2;
+
+    & + p {
+      @apply mb-4;
+    }
+  }
+
+  code {
+    @apply py-0.5 px-1 rounded bg-gray-200/50 text-sm text-blue-500;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .markdown {
+    a {
+      @apply text-blue-500 underline underline-offset-2;
+    }
+
+    h4 {
+      @apply flex items-center;
+
+      &:not(:first-child) {
+        @apply mt-6;
+      }
+
+      &::after {
+        @apply border-gray-200/80 border-b ml-2 grow block;
+        content: "";
+      }
+    }
+
+    ul:last-child {
+      margin-bottom: 12px;
+    }
+  }
 }
