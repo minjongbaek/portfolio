@@ -51,6 +51,43 @@ const SIDE_PROJECTS = [
   },
 ];
 
+const EDUCATION = [
+  {
+    id: 0,
+    title: "동양미래대학교",
+    major: "정보통신공학과",
+    degree: "전문학사",
+    status: "졸업",
+    startDate: "2014.03",
+    endDate: "2019.02",
+  },
+  {
+    id: 1,
+    title: "동양미래대학교",
+    major: "정보통신공학과 (전공심화)",
+    degree: "학사",
+    status: "졸업",
+    startDate: "2019.03",
+    endDate: "2020.02",
+  },
+  {
+    id: 2,
+    title: "프로그래머스 프론트엔드 데브코스 3기",
+    status: "수료",
+    startDate: "2022.10",
+    endDate: "2023.03",
+  },
+];
+
+const Certifications = [
+  {
+    id: 0,
+    title: "정보처리기사",
+    date: "2019.11",
+    issuer: "한국산업인력공단",
+  },
+];
+
 const Resume = async () => {
   const { default: IntroduceContent } = await import(`@/content/introduce.mdx`);
 
@@ -76,8 +113,12 @@ const Resume = async () => {
     )
   ).reverse();
 
+  const educations = [...EDUCATION].reverse();
+
+  const certifications = [...Certifications].reverse();
+
   return (
-    <div className="mt-12 flex flex-col gap-20 p-4">
+    <div className="my-12 flex flex-col gap-20 p-4">
       <div className="flex flex-col gap-8">
         <h1 className="leading-14">
           안녕하세요,
@@ -167,6 +208,44 @@ const Resume = async () => {
               </div>
             ),
           )}
+        </div>
+      </div>
+      <div>
+        <h2>교육</h2>
+        <hr className="mt-4 mb-8 border-gray-300" />
+        <div className="flex flex-col gap-12">
+          {educations.map(
+            ({ id, title, major, degree, status, startDate, endDate }) => (
+              <div key={id} className="mr-6 flex flex-col gap-2">
+                <h3>{title}</h3>
+                <div className="flex flex-col">
+                  {major && degree && (
+                    <span>
+                      {major} | {degree}
+                    </span>
+                  )}
+                  <span>
+                    {startDate} - {endDate} {endDate && <span>({status})</span>}
+                  </span>
+                </div>
+              </div>
+            ),
+          )}
+        </div>
+      </div>
+      <div>
+        <h2>자격증</h2>
+        <hr className="mt-4 mb-8 border-gray-300" />
+        <div className="flex flex-col gap-12">
+          {certifications.map(({ id, title, issuer, date }) => (
+            <div key={id} className="mr-6 flex flex-col gap-2">
+              <h3>{title}</h3>
+              <div className="flex flex-col">
+                <span>{issuer}</span>
+                <span>{date}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
