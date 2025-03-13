@@ -33,15 +33,14 @@ const WORK_EXPERIENCE = [
 
 const SIDE_PROJECTS = [
   {
+    id: "blog",
+    title: "Blog.minjong",
+  },
+  {
     id: "dadok",
     title: "다독다독",
     startDate: "2023.02",
     endDate: "2023.05",
-  },
-  {
-    id: "blog",
-    title: "Blog.minjong",
-    startDate: "2023.01",
   },
   {
     id: "shawkee",
@@ -136,7 +135,7 @@ const Resume = async () => {
           <IntroduceContent />
         </div>
       </div>
-      <div>
+      <div className="break-after-page">
         <h2>경력</h2>
         <hr className="mt-4 mb-8 border-gray-300" />
         <div className="flex flex-col gap-12">
@@ -194,9 +193,11 @@ const Resume = async () => {
                   </div>
                   <h3>{title}</h3>
                   <div className="flex flex-col">
-                    <span>
-                      {startDate} - {endDate ?? "진행중"}
-                    </span>
+                    {startDate && (
+                      <span>
+                        {startDate} - {endDate ?? "진행중"}
+                      </span>
+                    )}
                     {endDate && (
                       <span>({getDuration(startDate, endDate)})</span>
                     )}
