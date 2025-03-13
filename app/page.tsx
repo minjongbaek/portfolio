@@ -57,23 +57,27 @@ const Resume = async () => {
   const workExperienceWithContent = (
     await Promise.all(
       [...WORK_EXPERIENCE].map(async (experience) => {
-        const { default: WorkExperienceContent } = await import(`@/content/experience/${experience.id}.mdx`);
+        const { default: WorkExperienceContent } = await import(
+          `@/content/experience/${experience.id}.mdx`
+        );
         return { ...experience, WorkExperienceContent };
-      })
+      }),
     )
   ).reverse();
 
   const sideProjectsWithContent = (
     await Promise.all(
       [...SIDE_PROJECTS].map(async (sideProject) => {
-        const { default: SideProjectContent } = await import(`@/content/project/${sideProject.id}.mdx`);
+        const { default: SideProjectContent } = await import(
+          `@/content/project/${sideProject.id}.mdx`
+        );
         return { ...sideProject, SideProjectContent };
-      })
+      }),
     )
   ).reverse();
 
   return (
-    <div className="flex flex-col gap-20 mt-12 p-4">
+    <div className="mt-12 flex flex-col gap-20 p-4">
       <div className="flex flex-col gap-8">
         <h1 className="leading-14">
           안녕하세요,
@@ -93,53 +97,76 @@ const Resume = async () => {
       </div>
       <div>
         <h2>경력</h2>
-        <hr className="border-gray-300 mt-4 mb-8" />
+        <hr className="mt-4 mb-8 border-gray-300" />
         <div className="flex flex-col gap-12">
-          {workExperienceWithContent.map(({ id, title, position, startDate, endDate, WorkExperienceContent }) => (
-            <div className="flex" key={id}>
-              <div className="flex flex-col gap-2 w-42 mr-6 shrink-0">
-                <div className="border border-gray-200/80 rounded-xl w-20 p-1">
-                  <Image src={`/experience/${id}.png`} alt="title" width={80} height={80} />
+          {workExperienceWithContent.map(
+            ({
+              id,
+              title,
+              position,
+              startDate,
+              endDate,
+              WorkExperienceContent,
+            }) => (
+              <div className="flex" key={id}>
+                <div className="mr-6 flex w-42 shrink-0 flex-col gap-2">
+                  <div className="w-20 rounded-xl border border-gray-200/80 p-1">
+                    <Image
+                      src={`/experience/${id}.png`}
+                      alt="title"
+                      width={80}
+                      height={80}
+                    />
+                  </div>
+                  <h3>{title}</h3>
+                  <div className="flex flex-col">
+                    <span>{position}</span>
+                    <span>
+                      {startDate} - {endDate ?? "재직중"}
+                    </span>
+                    <span>({getDuration(startDate, endDate)})</span>
+                  </div>
                 </div>
-                <h3>{title}</h3>
-                <div className="flex flex-col">
-                  <span>{position}</span>
-                  <span>
-                    {startDate} - {endDate ?? "재직중"}
-                  </span>
-                  <span>({getDuration(startDate, endDate)})</span>
+                <div className="markdown grow border-l border-gray-200/80 pl-6">
+                  <WorkExperienceContent />
                 </div>
               </div>
-              <div className="border-l pl-6 border-gray-200/80 grow markdown">
-                <WorkExperienceContent />
-              </div>
-            </div>
-          ))}
+            ),
+          )}
         </div>
       </div>
       <div>
         <h2>프로젝트</h2>
-        <hr className="border-gray-300 mt-4 mb-8" />
+        <hr className="mt-4 mb-8 border-gray-300" />
         <div className="flex flex-col gap-12">
-          {sideProjectsWithContent.map(({ id, title, startDate, endDate, SideProjectContent }) => (
-            <div className="flex" key={id}>
-              <div className="flex flex-col gap-2 w-42 mr-6 shrink-0">
-                <div className="border border-gray-200/80 rounded-xl w-20 p-1">
-                  <Image src={`/project/${id}.png`} alt="title" width={80} height={80} />
+          {sideProjectsWithContent.map(
+            ({ id, title, startDate, endDate, SideProjectContent }) => (
+              <div className="flex" key={id}>
+                <div className="mr-6 flex w-42 shrink-0 flex-col gap-2">
+                  <div className="w-20 rounded-xl border border-gray-200/80 p-1">
+                    <Image
+                      src={`/project/${id}.png`}
+                      alt="title"
+                      width={80}
+                      height={80}
+                    />
+                  </div>
+                  <h3>{title}</h3>
+                  <div className="flex flex-col">
+                    <span>
+                      {startDate} - {endDate ?? "진행중"}
+                    </span>
+                    {endDate && (
+                      <span>({getDuration(startDate, endDate)})</span>
+                    )}
+                  </div>
                 </div>
-                <h3>{title}</h3>
-                <div className="flex flex-col">
-                  <span>
-                    {startDate} - {endDate ?? "진행중"}
-                  </span>
-                  {endDate && <span>({getDuration(startDate, endDate)})</span>}
+                <div className="markdown grow border-l border-gray-200/80 pl-6">
+                  <SideProjectContent />
                 </div>
               </div>
-              <div className="border-l pl-6 border-gray-200/80 grow markdown">
-                <SideProjectContent />
-              </div>
-            </div>
-          ))}
+            ),
+          )}
         </div>
       </div>
     </div>

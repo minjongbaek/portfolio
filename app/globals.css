@@ -26,11 +26,11 @@
   }
 
   h4 {
-    @apply text-2xl pb-2 pt-2.5 w-full;
+    @apply w-full pt-2.5 pb-2 text-2xl;
   }
 
   h5 {
-    @apply text-lg pb-2 pt-2.5;
+    @apply pt-2.5 pb-2 text-lg;
   }
 
   a {
@@ -40,7 +40,7 @@
   }
 
   ul {
-    @apply ml-6 pb-2 flex flex-col gap-1;
+    @apply ml-6 flex flex-col gap-1 pb-2;
 
     li {
       @apply list-disc;
@@ -52,7 +52,7 @@
   } */
 
   blockquote {
-    @apply py-4 px-6 bg-gray-200/50 rounded my-2;
+    @apply my-2 rounded bg-gray-200/50 px-6 py-4;
 
     & + p {
       @apply mb-4;
@@ -60,7 +60,7 @@
   }
 
   code {
-    @apply py-0.5 px-1.5 rounded bg-gray-200/50 text-sm text-blue-500;
+    @apply rounded bg-gray-200/50 px-1.5 py-0.5 text-sm text-blue-500;
   }
 }
 
@@ -78,7 +78,7 @@
       }
 
       &::after {
-        @apply border-gray-200/80 border-b ml-2 grow block;
+        @apply ml-2 block grow border-b border-gray-200/80;
         content: "";
       }
     }
