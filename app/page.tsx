@@ -152,7 +152,7 @@ const Resume = async () => {
                 <div className="mr-6 flex w-42 shrink-0 flex-col gap-2">
                   <div className="w-20 rounded-xl border border-gray-200/80 p-1">
                     <Image
-                      src={`/experience/${id}.png`}
+                      src={`/experience/${id}/logo.png`}
                       alt="title"
                       width={80}
                       height={80}
