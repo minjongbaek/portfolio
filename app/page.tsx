@@ -148,8 +148,8 @@ const Resume = async () => {
               endDate,
               WorkExperienceContent,
             }) => (
-              <div className="flex" key={id}>
-                <div className="mr-6 flex w-42 shrink-0 flex-col gap-2">
+              <div className="flex flex-col sm:flex-row" key={id}>
+                <div className="flex w-42 shrink-0 flex-col gap-2 sm:mr-6">
                   <div className="w-20 rounded-xl border border-gray-200/80 p-1">
                     <Image
                       src={`/experience/${id}/logo.png`}
@@ -167,7 +167,7 @@ const Resume = async () => {
                     <span>({getDuration(startDate, endDate)})</span>
                   </div>
                 </div>
-                <div className="markdown grow border-l border-gray-200/80 pl-6">
+                <div className="markdown grow border-gray-200/80 sm:border-l sm:pl-6">
                   <WorkExperienceContent />
                 </div>
               </div>
@@ -181,8 +181,8 @@ const Resume = async () => {
         <div className="flex flex-col gap-12">
           {sideProjectsWithContent.map(
             ({ id, title, startDate, endDate, SideProjectContent }) => (
-              <div className="flex" key={id}>
-                <div className="mr-6 flex w-42 shrink-0 flex-col gap-2">
+              <div className="flex flex-col sm:flex-row" key={id}>
+                <div className="flex w-42 shrink-0 flex-col gap-2 sm:mr-6">
                   <div className="w-20 rounded-xl border border-gray-200/80 p-1">
                     <Image
                       src={`/project/${id}.png`}
@@ -203,7 +203,7 @@ const Resume = async () => {
                     )}
                   </div>
                 </div>
-                <div className="markdown grow border-l border-gray-200/80 pl-6">
+                <div className="markdown grow border-gray-200/80 sm:border-l sm:pl-6">
                   <SideProjectContent />
                 </div>
               </div>
