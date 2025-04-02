@@ -3,6 +3,8 @@
 @layer base {
   body {
     @apply leading-7 break-keep;
+    width: 210mm;
+    height: 297mm;
   }
 
   h1,
@@ -26,7 +28,7 @@
   }
 
   h4 {
-    @apply w-full pt-2.5 pb-2 text-2xl;
+    @apply w-full pt-2.5 pb-2 text-xl;
   }
 
   h5 {
@@ -68,6 +70,14 @@
   .markdown {
     a {
       @apply text-blue-500 underline underline-offset-2;
+    }
+
+    h3 {
+      @apply mb-2;
+
+      &:not(:first-child) {
+        @apply mt-8 border-t border-gray-200/80 pt-8;
+      }
     }
 
     h4 {

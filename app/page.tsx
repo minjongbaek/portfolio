@@ -148,7 +148,10 @@ const Resume = async () => {
               endDate,
               WorkExperienceContent,
             }) => (
-              <div className="flex flex-col sm:flex-row" key={id}>
+              <div
+                className="flex break-after-page flex-col sm:flex-row"
+                key={id}
+              >
                 <div className="flex w-42 shrink-0 flex-col gap-2 sm:mr-6">
                   <div className="w-20 rounded-xl border border-gray-200/80 p-1">
                     <Image
