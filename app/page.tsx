@@ -149,25 +149,27 @@ const Resume = async () => {
               WorkExperienceContent,
             }) => (
               <div
-                className="flex break-after-page flex-col sm:flex-row"
+                className="flex break-after-page flex-col gap-8 sm:flex-row sm:gap-0"
                 key={id}
               >
-                <div className="flex w-42 shrink-0 flex-col gap-2 sm:mr-6">
-                  <div className="w-20 rounded-xl border border-gray-200/80 p-1">
+                <div className="flex w-full shrink-0 flex-row items-center gap-2 sm:mr-6 sm:w-42 sm:flex-col sm:items-start">
+                  <div className="h-24 w-24 shrink-0 rounded-xl border border-gray-200/80 p-1 sm:h-20 sm:w-20">
                     <Image
                       src={`/experience/${id}/logo.png`}
                       alt="title"
-                      width={80}
-                      height={80}
+                      width={120}
+                      height={120}
                     />
                   </div>
-                  <h3>{title}</h3>
-                  <div className="flex flex-col">
+                  <div className="flex w-full flex-col">
+                    <h3>{title}</h3>
                     <span>{position}</span>
-                    <span>
-                      {startDate} - {endDate ?? "재직중"}
-                    </span>
-                    <span>({getDuration(startDate, endDate)})</span>
+                    <div className="flex flex-row gap-1 sm:flex-col sm:gap-0">
+                      <span>
+                        {startDate} - {endDate ?? "재직중"}
+                      </span>
+                      <span>({getDuration(startDate, endDate)})</span>
+                    </div>
                   </div>
                 </div>
                 <div className="markdown grow border-gray-200/80 sm:border-l sm:pl-6">
@@ -184,26 +186,31 @@ const Resume = async () => {
         <div className="flex flex-col gap-12">
           {sideProjectsWithContent.map(
             ({ id, title, startDate, endDate, SideProjectContent }) => (
-              <div className="flex flex-col sm:flex-row" key={id}>
-                <div className="flex w-42 shrink-0 flex-col gap-2 sm:mr-6">
-                  <div className="w-20 rounded-xl border border-gray-200/80 p-1">
+              <div
+                className="flex break-after-page flex-col gap-1 sm:flex-row sm:gap-0"
+                key={id}
+              >
+                <div className="flex w-full shrink-0 flex-row items-center gap-2 sm:mr-6 sm:w-42 sm:flex-col sm:items-start">
+                  <div className="h-24 w-24 shrink-0 rounded-xl border border-gray-200/80 p-1 sm:h-20 sm:w-20">
                     <Image
                       src={`/project/${id}.png`}
                       alt="title"
-                      width={80}
-                      height={80}
+                      width={120}
+                      height={120}
                     />
                   </div>
-                  <h3>{title}</h3>
-                  <div className="flex flex-col">
-                    {startDate && (
-                      <span>
-                        {startDate} - {endDate ?? "진행중"}
-                      </span>
-                    )}
-                    {endDate && (
-                      <span>({getDuration(startDate, endDate)})</span>
-                    )}
+                  <div className="flex w-full flex-col">
+                    <h3>{title}</h3>
+                    <div className="flex flex-row gap-1 sm:flex-col sm:gap-0">
+                      {startDate && (
+                        <span>
+                          {startDate} - {endDate ?? "진행중"}
+                        </span>
+                      )}
+                      {endDate && (
+                        <span>({getDuration(startDate, endDate)})</span>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="markdown grow border-gray-200/80 sm:border-l sm:pl-6">

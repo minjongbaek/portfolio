@@ -2,9 +2,13 @@
 
 @layer base {
   body {
-    @apply leading-7 break-keep;
+    @apply h-[297mm] w-[210mm] leading-7 break-keep;
     width: 210mm;
     height: 297mm;
+
+    @media (max-width: 576px) {
+      @apply h-full w-full;
+    }
   }
 
   h1,
