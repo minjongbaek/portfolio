@@ -149,7 +149,7 @@ const Resume = async () => {
               WorkExperienceContent,
             }) => (
               <div
-                className="flex break-after-page flex-col gap-8 sm:flex-row sm:gap-0"
+                className="flex flex-col gap-8 sm:flex-row sm:gap-0"
                 key={id}
               >
                 <div className="flex w-full shrink-0 flex-row items-center gap-2 sm:mr-6 sm:w-42 sm:flex-col sm:items-start">
@@ -187,7 +187,7 @@ const Resume = async () => {
           {sideProjectsWithContent.map(
             ({ id, title, startDate, endDate, SideProjectContent }) => (
               <div
-                className="flex break-after-page flex-col gap-1 sm:flex-row sm:gap-0"
+                className="flex flex-col gap-1 sm:flex-row sm:gap-0"
                 key={id}
               >
                 <div className="flex w-full shrink-0 flex-row items-center gap-2 sm:mr-6 sm:w-42 sm:flex-col sm:items-start">
