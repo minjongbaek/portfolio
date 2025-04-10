@@ -1,10 +1,5 @@
 import { FC } from "react";
-
-interface CertificationCardProps {
-  title: string;
-  date: string;
-  issuer: string;
-}
+import { CertificationCardProps } from "@/types";
 
 export const CertificationCard: FC<CertificationCardProps> = ({
   title,

@@ -1,13 +1,9 @@
-import { FC, ReactNode } from "react";
-
-interface SectionProps {
-  title: string;
-  children: ReactNode;
-}
+import { FC } from "react";
+import { SectionProps } from "@/types";
 
 export const Section: FC<SectionProps> = ({ title, children }) => {
   return (
-    <div>
+    <div className="break-after-page">
       <h2>{title}</h2>
       <hr className="mt-4 mb-8 border-gray-300" />
       {children}

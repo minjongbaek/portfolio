@@ -1,13 +1,5 @@
 import { FC } from "react";
-
-interface BioLink {
-  label: string;
-  href: string;
-}
-
-interface BioLinksProps {
-  links: BioLink[];
-}
+import { BioLinksProps } from "@/types";
 
 export const BioLinks: FC<BioLinksProps> = ({ links }) => {
   return (

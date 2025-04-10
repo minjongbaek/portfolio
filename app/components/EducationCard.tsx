@@ -1,13 +1,5 @@
 import { FC } from "react";
-
-interface EducationCardProps {
-  title: string;
-  major?: string;
-  degree?: string;
-  status: string;
-  startDate: string;
-  endDate: string;
-}
+import { EducationCardProps } from "@/types";
 
 export const EducationCard: FC<EducationCardProps> = ({
   title,

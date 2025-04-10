@@ -1,14 +1,6 @@
 import Image from "next/image";
-import { FC, ReactNode } from "react";
-
-interface ExperienceCardProps {
-  title: string;
-  position?: string;
-  startDate: string;
-  endDate?: string;
-  imagePath: string;
-  children: ReactNode;
-}
+import { FC } from "react";
+import { ExperienceCardProps } from "@/types";
 
 export const ExperienceCard: FC<ExperienceCardProps> = ({
   title,
@@ -19,7 +11,7 @@ export const ExperienceCard: FC<ExperienceCardProps> = ({
   children,
 }) => {
   return (
-    <div className="flex break-after-page flex-col gap-8 sm:flex-row sm:gap-0">
+    <div className="flex flex-col gap-8 sm:flex-row sm:gap-0">
       <div className="flex w-full shrink-0 flex-row items-center gap-2 sm:mr-6 sm:w-42 sm:flex-col sm:items-start">
         <div className="h-24 w-24 shrink-0 rounded-xl border border-gray-200/80 p-1 sm:h-20 sm:w-20">
           <Image src={imagePath} alt={title} width={120} height={120} />
