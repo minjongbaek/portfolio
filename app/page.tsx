@@ -1,4 +1,8 @@
-import Image from "next/image";
+import { BioLinks } from "./components/BioLinks";
+import { Section } from "./components/Section";
+import { ExperienceCard } from "./components/ExperienceCard";
+import { EducationCard } from "./components/EducationCard";
+import { CertificationCard } from "./components/CertificationCard";
 
 const BIO = [
   {
@@ -35,6 +39,7 @@ const SIDE_PROJECTS = [
   {
     id: "blog",
     title: "Blog.minjong",
+    startDate: "2023.01",
   },
   {
     id: "dadok",
@@ -113,7 +118,6 @@ const Resume = async () => {
   ).reverse();
 
   const educations = [...EDUCATION].reverse();
-
   const certifications = [...Certifications].reverse();
 
   return (
@@ -124,20 +128,13 @@ const Resume = async () => {
           <br />
           프론트엔드 개발자 <span className="text-blue-500">백민종</span>입니다.
         </h1>
-        <div className="flex gap-4">
-          {BIO.map(({ label, href }) => (
-            <a key={label} href={href} target="_blank">
-              {label}
-            </a>
-          ))}
-        </div>
+        <BioLinks links={BIO} />
         <div>
           <IntroduceContent />
         </div>
       </div>
-      <div className="break-after-page">
-        <h2>경력</h2>
-        <hr className="mt-4 mb-8 border-gray-300" />
+
+      <Section title="경력">
         <div className="flex flex-col gap-12">
           {workExperienceWithContent.map(
             ({
@@ -148,138 +145,71 @@ const Resume = async () => {
               endDate,
               WorkExperienceContent,
             }) => (
-              <div
-                className="flex flex-col gap-8 sm:flex-row sm:gap-0"
+              <ExperienceCard
                 key={id}
+                title={title}
+                position={position}
+                startDate={startDate}
+                endDate={endDate}
+                imagePath={`/experience/${id}/logo.png`}
               >
-                <div className="flex w-full shrink-0 flex-row items-center gap-2 sm:mr-6 sm:w-42 sm:flex-col sm:items-start">
-                  <div className="h-24 w-24 shrink-0 rounded-xl border border-gray-200/80 p-1 sm:h-20 sm:w-20">
-                    <Image
-                      src={`/experience/${id}/logo.png`}
-                      alt="title"
-                      width={120}
-                      height={120}
-                    />
-                  </div>
-                  <div className="flex w-full flex-col">
-                    <h3>{title}</h3>
-                    <span>{position}</span>
-                    <div className="flex flex-row gap-1 sm:flex-col sm:gap-0">
-                      <span>
-                        {startDate} - {endDate ?? "재직중"}
-                      </span>
-                      <span>({getDuration(startDate, endDate)})</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="markdown grow border-gray-200/80 sm:border-l sm:pl-6">
-                  <WorkExperienceContent />
-                </div>
-              </div>
+                <WorkExperienceContent />
+              </ExperienceCard>
             ),
           )}
         </div>
-      </div>
-      <div>
-        <h2>프로젝트</h2>
-        <hr className="mt-4 mb-8 border-gray-300" />
+      </Section>
+
+      <Section title="프로젝트">
         <div className="flex flex-col gap-12">
           {sideProjectsWithContent.map(
             ({ id, title, startDate, endDate, SideProjectContent }) => (
-              <div
-                className="flex flex-col gap-1 sm:flex-row sm:gap-0"
+              <ExperienceCard
                 key={id}
+                title={title}
+                startDate={startDate}
+                endDate={endDate}
+                imagePath={`/project/${id}.png`}
               >
-                <div className="flex w-full shrink-0 flex-row items-center gap-2 sm:mr-6 sm:w-42 sm:flex-col sm:items-start">
-                  <div className="h-24 w-24 shrink-0 rounded-xl border border-gray-200/80 p-1 sm:h-20 sm:w-20">
-                    <Image
-                      src={`/project/${id}.png`}
-                      alt="title"
-                      width={120}
-                      height={120}
-                    />
-                  </div>
-                  <div className="flex w-full flex-col">
-                    <h3>{title}</h3>
-                    <div className="flex flex-row gap-1 sm:flex-col sm:gap-0">
-                      {startDate && (
-                        <span>
-                          {startDate} - {endDate ?? "진행중"}
-                        </span>
-                      )}
-                      {endDate && (
-                        <span>({getDuration(startDate, endDate)})</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className="markdown grow border-gray-200/80 sm:border-l sm:pl-6">
-                  <SideProjectContent />
-                </div>
-              </div>
+                <SideProjectContent />
+              </ExperienceCard>
             ),
           )}
         </div>
-      </div>
-      <div>
-        <h2>교육</h2>
-        <hr className="mt-4 mb-8 border-gray-300" />
+      </Section>
+
+      <Section title="교육">
         <div className="flex flex-col gap-12">
           {educations.map(
             ({ id, title, major, degree, status, startDate, endDate }) => (
-              <div key={id} className="mr-6 flex flex-col gap-2">
-                <h3>{title}</h3>
-                <div className="flex flex-col">
-                  {major && degree && (
-                    <span>
-                      {major} | {degree}
-                    </span>
-                  )}
-                  <span>
-                    {startDate} - {endDate} {endDate && <span>({status})</span>}
-                  </span>
-                </div>
-              </div>
+              <EducationCard
+                key={id}
+                title={title}
+                major={major}
+                degree={degree}
+                status={status}
+                startDate={startDate}
+                endDate={endDate}
+              />
             ),
           )}
         </div>
-      </div>
-      <div>
-        <h2>자격증</h2>
-        <hr className="mt-4 mb-8 border-gray-300" />
+      </Section>
+
+      <Section title="자격증">
         <div className="flex flex-col gap-12">
-          {certifications.map(({ id, title, issuer, date }) => (
-            <div key={id} className="mr-6 flex flex-col gap-2">
-              <h3>{title}</h3>
-              <div className="flex flex-col">
-                <span>{issuer}</span>
-                <span>{date}</span>
-              </div>
-            </div>
+          {certifications.map(({ id, title, date, issuer }) => (
+            <CertificationCard
+              key={id}
+              title={title}
+              date={date}
+              issuer={issuer}
+            />
           ))}
         </div>
-      </div>
+      </Section>
     </div>
   );
 };
 
 export default Resume;
-
-const getDuration = (startDate: string, endDate?: string): string => {
-  const start = new Date(startDate);
-  const end = endDate ? new Date(endDate) : new Date();
-
-  let years = end.getFullYear() - start.getFullYear();
-  let months = end.getMonth() - start.getMonth();
-
-  if (months < 0) {
-    years -= 1;
-    months += 12;
-  }
-
-  if (years === 0) {
-    return `${months}개월`;
-  }
-
-  return `${years}년 ${months}개월`;
-};
