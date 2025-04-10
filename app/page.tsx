@@ -134,7 +134,7 @@ const Resume = async () => {
         </div>
       </div>
 
-      <Section title="경력">
+      <Section title="경력" isBreak>
         <div className="flex flex-col gap-12">
           {workExperienceWithContent.map(
             ({
