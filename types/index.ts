@@ -21,6 +21,7 @@ export interface ExperienceCardProps {
   startDate: string;
   endDate?: string;
   imagePath: string;
+  type: "WORK_EXPERIENCE" | "SIDE_PROJECT";
   children: ReactNode;
 }
 

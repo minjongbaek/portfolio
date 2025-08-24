@@ -11,7 +11,7 @@ const Resume = async () => {
     await Promise.all(
       [...WORK_EXPERIENCE].map(async (experience) => {
         const { default: WorkExperienceContent } = await import(
-          `@/content/experience/${experience.id}.mdx`
+          `@/content/work-experience/${experience.id}.mdx`
         );
         return { ...experience, WorkExperienceContent };
       }),
@@ -22,7 +22,7 @@ const Resume = async () => {
     await Promise.all(
       [...SIDE_PROJECTS].map(async (sideProject) => {
         const { default: SideProjectContent } = await import(
-          `@/content/project/${sideProject.id}.mdx`
+          `@/content/side-project/${sideProject.id}.mdx`
         );
         return { ...sideProject, SideProjectContent };
       }),
@@ -64,6 +64,7 @@ const Resume = async () => {
                 startDate={startDate}
                 endDate={endDate}
                 imagePath={`/experience/${id}/logo.png`}
+                type="WORK_EXPERIENCE"
               >
                 <WorkExperienceContent />
               </ExperienceCard>
@@ -82,6 +83,7 @@ const Resume = async () => {
                 startDate={startDate}
                 endDate={endDate}
                 imagePath={`/project/${id}.png`}
+                type="SIDE_PROJECT"
               >
                 <SideProjectContent />
               </ExperienceCard>

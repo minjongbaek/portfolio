@@ -8,8 +8,11 @@ export const ExperienceCard: FC<ExperienceCardProps> = ({
   startDate,
   endDate,
   imagePath,
+  type,
   children,
 }) => {
+  const currentStatusText = type === "WORK_EXPERIENCE" ? "재직중" : "진행중";
+
   return (
     <div className="flex flex-col gap-8 sm:flex-row sm:gap-0">
       <div className="flex w-full shrink-0 flex-row items-center gap-2 sm:mr-6 sm:w-42 sm:flex-col sm:items-start">
@@ -19,7 +22,7 @@ export const ExperienceCard: FC<ExperienceCardProps> = ({
             alt={title}
             width={120}
             height={120}
-            className="rounded-lg"
+            className="rounded-"
           />
         </div>
         <div className="flex w-full flex-col">
@@ -27,7 +30,7 @@ export const ExperienceCard: FC<ExperienceCardProps> = ({
           {position && <span>{position}</span>}
           <div className="flex flex-row gap-1 sm:flex-col sm:gap-0">
             <span>
-              {startDate} - {endDate ?? "진행중"}
+              {startDate} - {endDate ?? currentStatusText}
             </span>
             {endDate && <span>({getDuration(startDate, endDate)})</span>}
           </div>
