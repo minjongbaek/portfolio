@@ -4,94 +4,6 @@ import { ExperienceCard } from "./components/ExperienceCard";
 import { EducationCard } from "./components/EducationCard";
 import { CertificationCard } from "./components/CertificationCard";
 
-const BIO = [
-  {
-    label: "Email",
-    href: "mailto:minjongbaek@gmail.com",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/minjongbaek",
-  },
-  {
-    label: "Blog",
-    href: "https://blog.minjong.dev",
-  },
-];
-
-const WORK_EXPERIENCE = [
-  {
-    id: "knowck",
-    title: "노크",
-    position: "풀스택 개발자",
-    startDate: "2019.12",
-    endDate: "2022.07",
-  },
-  {
-    id: "futurewiz",
-    title: "퓨쳐위즈",
-    position: "프론트엔드 개발자",
-    startDate: "2023.08",
-  },
-];
-
-const SIDE_PROJECTS = [
-  {
-    id: "blog",
-    title: "Blog.minjong",
-    startDate: "2023.01",
-  },
-  {
-    id: "dadok",
-    title: "다독다독",
-    startDate: "2023.02",
-    endDate: "2023.05",
-  },
-  {
-    id: "shawkee",
-    title: "Shawkee OS",
-    startDate: "2023.12",
-    endDate: "2024.06",
-  },
-];
-
-const EDUCATION = [
-  {
-    id: 0,
-    title: "동양미래대학교",
-    major: "정보통신공학과",
-    degree: "전문학사",
-    status: "졸업",
-    startDate: "2014.03",
-    endDate: "2019.02",
-  },
-  {
-    id: 1,
-    title: "동양미래대학교",
-    major: "정보통신공학과 (전공심화)",
-    degree: "학사",
-    status: "졸업",
-    startDate: "2019.03",
-    endDate: "2020.02",
-  },
-  {
-    id: 2,
-    title: "프로그래머스 프론트엔드 데브코스 3기",
-    status: "수료",
-    startDate: "2022.10",
-    endDate: "2023.03",
-  },
-];
-
-const Certifications = [
-  {
-    id: 0,
-    title: "정보처리기사",
-    date: "2019.11",
-    issuer: "한국산업인력공단",
-  },
-];
-
 const Resume = async () => {
   const { default: IntroduceContent } = await import(`@/content/introduce.mdx`);
 
@@ -213,3 +125,98 @@ const Resume = async () => {
 };
 
 export default Resume;
+
+const BIO = [
+  {
+    label: "Email",
+    href: "mailto:minjongbaek@gmail.com",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/minjongbaek",
+  },
+  {
+    label: "Blog",
+    href: "https://blog.minjong.dev",
+  },
+];
+
+const WORK_EXPERIENCE = [
+  {
+    id: "knowck",
+    title: "노크",
+    position: "풀스택 개발자",
+    startDate: "2019.12",
+    endDate: "2022.07",
+  },
+  {
+    id: "futurewiz",
+    title: "퓨쳐위즈",
+    position: "프론트엔드 개발자",
+    startDate: "2023.08",
+    endDate: "2025.06",
+  },
+  {
+    id: "bemyfriends",
+    title: "비마이프렌즈",
+    position: "프론트엔드 개발자",
+    startDate: "2025.06",
+  },
+];
+
+const SIDE_PROJECTS = [
+  {
+    id: "blog",
+    title: "Blog.minjong",
+    startDate: "2023.01",
+  },
+  {
+    id: "dadok",
+    title: "다독다독",
+    startDate: "2023.02",
+    endDate: "2023.05",
+  },
+  {
+    id: "shawkee",
+    title: "Shawkee OS",
+    startDate: "2023.12",
+    endDate: "2024.06",
+  },
+];
+
+const EDUCATION = [
+  {
+    id: 0,
+    title: "동양미래대학교",
+    major: "정보통신공학과",
+    degree: "전문학사",
+    status: "졸업",
+    startDate: "2014.03",
+    endDate: "2019.02",
+  },
+  {
+    id: 1,
+    title: "동양미래대학교",
+    major: "정보통신공학과 (전공심화)",
+    degree: "학사",
+    status: "졸업",
+    startDate: "2019.03",
+    endDate: "2020.02",
+  },
+  {
+    id: 2,
+    title: "프로그래머스 프론트엔드 데브코스 3기",
+    status: "수료",
+    startDate: "2022.10",
+    endDate: "2023.03",
+  },
+];
+
+const Certifications = [
+  {
+    id: 0,
+    title: "정보처리기사",
+    date: "2019.11",
+    issuer: "한국산업인력공단",
+  },
+];

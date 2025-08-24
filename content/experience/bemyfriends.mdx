@@ -1,0 +1,33 @@
+### b.stage
+
+> MAU 300만 규모의 글로벌 팬덤 SaaS 플랫폼 b.stage에서 프론트엔드 개발을 담당하고 있습니다. 브랜드마다 독립된 공간을 제공하는 멀티 테넌시 기반 구조에서, 커머스, 회원 관리, 콘텐츠, 멤버십 등의 기능을 개발하고 유지보수하고 있습니다.
+
+`Next.js` `React` `Zustand` `SCSS` `Monorepo`
+
+<div className="flex gap-1">
+
+![bstage_01](/experience/bemyfriends/bstage_01.png)
+
+![bstage_02](/experience/bemyfriends/bstage_02.png)
+
+![bstage_03](/experience/bemyfriends/bstage_03.png)
+
+![bstage_04](/experience/bemyfriends/bstage_04.png)
+
+</div>
+
+#### 통합 계정 시스템 구축
+
+##### ❗️ 문제
+
+- 멀티 테넌시 구조로 인해 사용자가 브랜드마다 별도로 회원가입해야 했고, 이는 **로그인/가입 반복으로 이어지는 불편한 사용자 경험을 유발**했습니다.
+
+##### 💡 해결
+
+- **OAuth Provider 역할을 하는 통합 계정 시스템을 구축**하고, 각 브랜드는 OAuth 방식으로 연동될 수 있도록 구현했습니다.
+- 보안성을 높이기 위해 OAuth 과정 중 노출될 수 있는 **민감 정보는 Next.js API Route를 통해 서버 측에서 안전하게 처리**했습니다.
+
+##### 📈 결과 및 경험
+
+- 통합 계정 도입으로 하나의 로그인으로 여러 브랜드를 이용할 수 있게 되어, **사용자 흐름이 매끄러워지고 반복 가입의 피로도가 해소**되었습니다.
+- OAuth 인증 플로우에 대한 이해와 실무 적용 경험을 쌓았고, 내부 API 기반 설계를 통해 보안성과 운영 효율을 함께 확보하는 경험을 쌓았습니다.
